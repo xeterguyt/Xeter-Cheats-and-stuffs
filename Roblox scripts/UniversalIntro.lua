@@ -1,98 +1,124 @@
--- Universal Intro
-return function(SCRIPT_URL)
-	local TweenService = game:GetService("TweenService")
-	local player = game.Players.LocalPlayer
-	local gui = Instance.new("ScreenGui")
-	gui.Name = "UniversalIntro"
-	gui.IgnoreGuiInset = true
-	gui.ResetOnSpawn = false
-	gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	gui.Parent = player:WaitForChild("PlayerGui")
+return function()
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
+    local SoundService = game:GetService("SoundService")
+    local player = Players.LocalPlayer
+    local parentGui = player:WaitForChild("PlayerGui")
 
-	-- Panel utama
-	local panel = Instance.new("Frame")
-	panel.Size = UDim2.new(0, 300, 0, 160)
-	panel.Position = UDim2.new(0.5, 0, -1, 0)
-	panel.AnchorPoint = Vector2.new(0.5, 0.5)
-	panel.BackgroundColor3 = Color3.fromRGB(50, 0, 0)
-	panel.BorderSizePixel = 0
-	panel.Parent = gui
+    -- create GUI root
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "Xeter_UniversalIntro"
+    gui.ResetOnSpawn = false
+    gui.IgnoreGuiInset = true
+    gui.Parent = parentGui
 
-	local corner = Instance.new("UICorner")
-	corner.CornerRadius = UDim.new(0, 8)
-	corner.Parent = panel
+    -- panel
+    local panel = Instance.new("Frame")
+    panel.Size = UDim2.new(0, 360, 0, 200)
+    panel.AnchorPoint = Vector2.new(0.5, 0.5)
+    panel.Position = UDim2.new(0.5, 0, -0.5, 0) -- start above screen
+    panel.BackgroundColor3 = Color3.fromRGB(140, 18, 18) -- stylish deep red
+    panel.BorderSizePixel = 0
+    panel.ZIndex = 99999
+    panel.Parent = gui
 
-	local outline = Instance.new("UIStroke")
-	outline.Thickness = 2
-	outline.Color = Color3.fromRGB(255, 80, 80)
-	outline.Parent = panel
+    -- rounded corner + outline
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 10)
+    corner.Parent = panel
 
-	-- Logo
-	local logo = Instance.new("ImageLabel")
-	logo.Size = UDim2.new(0, 90, 0, 90)
-	logo.AnchorPoint = Vector2.new(0.5, 0)
-	logo.Position = UDim2.new(0.5, 0, 0, 8)
-	logo.BackgroundTransparency = 1
-	logo.Image = "rbxassetid://108691300199501"
-	logo.ImageColor3 = Color3.fromRGB(255, 80, 80)
-	logo.Parent = panel
+    local outline = Instance.new("UIStroke")
+    outline.Thickness = 3
+    outline.Color = Color3.fromRGB(255, 220, 220)
+    outline.Parent = panel
 
-	-- Tulisan by xeter
-	local title = Instance.new("TextLabel")
-	title.Size = UDim2.new(1, 0, 0, 40)
-	title.Position = UDim2.new(0, 0, 0, 95)
-	title.BackgroundTransparency = 1
-	title.Text = "by xeter"
-	title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	title.Font = Enum.Font.GothamBold
-	title.TextScaled = true
-	title.Parent = panel
+    -- logo (centered, above text)
+    local logo = Instance.new("ImageLabel")
+    logo.Size = UDim2.new(0, 88, 0, 88)
+    logo.AnchorPoint = Vector2.new(0.5, 0)
+    logo.Position = UDim2.new(0.5, 0, 0, 16)
+    logo.Image = "rbxassetid://108691300199501" -- gunakan id yang kamu berikan
+    logo.BackgroundTransparency = 1
+    logo.Parent = panel
 
-	-- Powered by AI
-	local sub = Instance.new("TextLabel")
-	sub.Size = UDim2.new(1, 0, 0, 25)
-	sub.Position = UDim2.new(0, 0, 0, 125)
-	sub.BackgroundTransparency = 1
-	sub.Text = "powered by AI tools"
-	sub.TextColor3 = Color3.fromRGB(230, 200, 200)
-	sub.Font = Enum.Font.Gotham
-	sub.TextScaled = true
-	sub.Parent = panel
+    -- title ("by xeter")
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, -20, 0, 40)
+    title.Position = UDim2.new(0, 10, 0, 110)
+    title.BackgroundTransparency = 1
+    title.Text = "by xeter"
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 32
+    title.TextColor3 = Color3.fromRGB(255,255,255)
+    title.TextScaled = false
+    title.TextStrokeTransparency = 0.6
+    title.TextWrapped = true
+    title.Parent = panel
 
-	-- Enjoy!
-	local enjoy = Instance.new("TextLabel")
-	enjoy.Size = UDim2.new(1, 0, 0, 30)
-	enjoy.Position = UDim2.new(0, 0, 1, 5)
-	enjoy.AnchorPoint = Vector2.new(0, 1)
-	enjoy.BackgroundTransparency = 1
-	enjoy.Text = "Enjoy!"
-	enjoy.TextColor3 = Color3.fromRGB(200, 80, 80)
-	enjoy.Font = Enum.Font.GothamBold
-	enjoy.TextScaled = true
-	enjoy.Parent = panel
+    -- sub ("powered by AI tools")
+    local sub = Instance.new("TextLabel")
+    sub.Size = UDim2.new(1, -20, 0, 24)
+    sub.Position = UDim2.new(0, 10, 0, 148)
+    sub.BackgroundTransparency = 1
+    sub.Text = "powered by AI tools"
+    sub.Font = Enum.Font.Gotham
+    sub.TextSize = 18
+    sub.TextColor3 = Color3.fromRGB(235,230,230)
+    sub.TextScaled = false
+    sub.Parent = panel
 
-	-- Tween sequence
-	local tweenIn = TweenService:Create(panel, TweenInfo.new(3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-		Position = UDim2.new(0.5, 0, 0.5, 0)
-	})
-	local tweenOut = TweenService:Create(panel, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
-		BackgroundTransparency = 1
-	})
+    -- enjoy (slightly darker)
+    local enjoy = Instance.new("TextLabel")
+    enjoy.Size = UDim2.new(1, -20, 0, 20)
+    enjoy.Position = UDim2.new(0, 10, 0, 170)
+    enjoy.BackgroundTransparency = 1
+    enjoy.Text = "Enjoy!"
+    enjoy.Font = Enum.Font.GothamSemibold
+    enjoy.TextSize = 18
+    enjoy.TextColor3 = Color3.fromRGB(170,60,60)
+    enjoy.Parent = panel
 
-	tweenIn:Play()
-	tweenIn.Completed:Wait()
-	task.wait(2)
-	tweenOut:Play()
-	for _, child in ipairs(panel:GetDescendants()) do
-		if child:IsA("TextLabel") or child:IsA("ImageLabel") then
-			TweenService:Create(child, TweenInfo.new(1), {TextTransparency = 1, ImageTransparency = 1}):Play()
-		end
-	end
-	tweenOut.Completed:Wait()
-	gui:Destroy()
+    -- optional whoosh sound (fire-and-forget)
+    spawn(function()
+        pcall(function()
+            local s = Instance.new("Sound")
+            s.SoundId = "rbxassetid://9118823106" -- contoh whoosh
+            s.Volume = 1.6
+            s.Parent = SoundService
+            s:Play()
+            task.delay(2, function() pcall(function() s:Destroy() end) end)
+        end)
+    end)
 
-	-- Jalankan script utama setelah intro
-	if SCRIPT_URL then
-		loadstring(game:HttpGet(SCRIPT_URL))()
-	end
+    -- Tween in: 3s from top to center
+    local tweenIn = TweenService:Create(panel, TweenInfo.new(3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+        Position = UDim2.new(0.5, 0, 0.5, 0)
+    })
+    tweenIn:Play()
+    tweenIn.Completed:Wait()
+
+    -- hold 2s
+    task.wait(2)
+
+    -- fade out 1s (panel + children)
+    local tweenOut = TweenService:Create(panel, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+        BackgroundTransparency = 1
+    })
+    tweenOut:Play()
+    for _, child in ipairs(panel:GetDescendants()) do
+        if child:IsA("TextLabel") then
+            TweenService:Create(child, TweenInfo.new(1), {TextTransparency = 1}):Play()
+        elseif child:IsA("ImageLabel") then
+            TweenService:Create(child, TweenInfo.new(1), {ImageTransparency = 1}):Play()
+        elseif child:IsA("UIStroke") then
+            TweenService:Create(child, TweenInfo.new(1), {Transparency = 1}):Play()
+        end
+    end
+    tweenOut.Completed:Wait()
+
+    -- cleanup
+    gui:Destroy()
+
+    -- function returns after finished
+    return
 end
