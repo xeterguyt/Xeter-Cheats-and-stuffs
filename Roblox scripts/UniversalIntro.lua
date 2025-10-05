@@ -40,8 +40,9 @@ return function()
     logo.Position = UDim2.new(0.5, 0, 0, 16)
     logo.Image = "rbxassetid://133865385818233"
     logo.BackgroundTransparency = 1
-    logo.ZIndex = logo.Parent.ZIndex + 1
     logo.Parent = panel
+    logo.ZIndex = logo.Parent.ZIndex + 1
+    
 
     -- outline logo (hitam, sama tebal)
     local logoOutline = Instance.new("UIStroke")
