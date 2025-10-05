@@ -1,6 +1,7 @@
 --[[
 🎃 Halloween ESP System v3.4
 Intro!
+And som manually fixes
 --]]
 
 -- panggil intro dan tunggu selesaiiii
