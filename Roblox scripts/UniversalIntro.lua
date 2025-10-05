@@ -37,10 +37,10 @@ return function()
     logo.Size = UDim2.new(0, 200, 0, 200)
     logo.AnchorPoint = Vector2.new(0.5, 0.5)
     logo.Position = UDim2.new(0.5, -100, 0.2, 0)
-    logo.Image = "rbxassetid://32578004"
-    logo.BackgroundTransparency = 1
+    logo.Image = "rbxassetid://130218742"
+    logo.BackgroundTransparency = 0
     logo.Parent = panel
-    logo.ZIndex = panel.ZIndex+1
+    logo.ZIndex = logo.Parent.ZIndex+1
 
     -- title ("by xeter")
     local title = Instance.new("TextLabel")
@@ -55,7 +55,7 @@ return function()
     title.TextStrokeTransparency = 0.6
     title.TextWrapped = true
     title.Parent = panel
-    title.ZIndex = title.parent.ZIndex+1
+    title.ZIndex = title.Parent.ZIndex+1
 
 
     -- sub ("powered by AI tools")
@@ -69,7 +69,7 @@ return function()
     sub.TextColor3 = Color3.fromRGB(235,230,230)
     sub.TextScaled = false
     sub.Parent = panel
-    sub.ZIndex = sub.parent.ZIndex+1
+    sub.ZIndex = sub.Parent.ZIndex+1
 
 
     -- enjoy (slightly darker)
@@ -82,7 +82,7 @@ return function()
     enjoy.TextSize = 18
     enjoy.TextColor3 = Color3.fromRGB(170,60,60)
     enjoy.Parent = panel
-    enjoy.ZIndex = enjoy.parent.ZIndex+1
+    enjoy.ZIndex = enjoy.Parent.ZIndex+1
 
 
     -- optional whoosh sound (fire-and-forget)
