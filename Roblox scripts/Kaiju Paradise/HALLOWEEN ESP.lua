@@ -1,10 +1,17 @@
 --[[
-🎃 Halloween ESP System v3.3
-  Perubahan:
-- Menampilkan teks jarak & titik indikator untuk "HalloweenDoor" (ungu) dan "Pumpkin" (oranye).
-- Tombol ON/OFF + tombol [X] untuk mematikan script secara permanen.
-- Indikator ping... kenapa nggak? ya kan..
+🎃 Halloween ESP System v3.4
+Intro!
 --]]
+
+local INTRO_URL = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/Roblox%20scripts/UniversalIntro.lua"
+local SCRIPT_URL = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/Roblox%20scripts/Kaiju%20Paradise/HALLOWEEN%20ESP.lua"
+
+if not getgenv()._XETER_INTRO_LOADED then
+	getgenv()._XETER_INTRO_LOADED = true
+	local intro = loadstring(game:HttpGet(INTRO_URL))()
+	intro(SCRIPT_URL)
+	return
+end
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
