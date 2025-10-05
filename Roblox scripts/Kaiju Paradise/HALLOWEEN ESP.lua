@@ -10,7 +10,7 @@ local INTRO_RAW = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-
 local intro = loadstring(game:HttpGet(INTRO_RAW))()  -- loadstring returns the function
 intro() -- plays intro and yields until done
 
--- lanjutkan ke kode ESP-mu di bawah ini...
+--habis itu lanjot
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
