@@ -37,7 +37,7 @@ return function()
     logo.Size = UDim2.new(0, 88, 0, 88)
     logo.AnchorPoint = Vector2.new(0.5, 0)
     logo.Position = UDim2.new(0.5, 0, 0, 16)
-    logo.Image = "https://create.roblox.com/store/asset/8508980536/Xryran"
+    logo.Image = "rbxassetid://108691300199501"
     logo.BackgroundTransparency = 1
     logo.Parent = panel
     logo.ZIndex = logo.parent.ZIndex+1
