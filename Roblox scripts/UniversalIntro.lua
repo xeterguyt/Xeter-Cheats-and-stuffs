@@ -17,34 +17,39 @@ return function()
     local panel = Instance.new("Frame")
     panel.Size = UDim2.new(0, 360, 0, 200)
     panel.AnchorPoint = Vector2.new(0.5, 0.5)
-    panel.Position = UDim2.new(0.5, 0, -0.5, 0) -- start above screen
-    panel.BackgroundColor3 = Color3.fromRGB(140, 18, 18) -- stylish deep red
+    panel.Position = UDim2.new(0.5, 0, -0.5, 0)
+    panel.BackgroundColor3 = Color3.fromRGB(140, 18, 18)
     panel.BorderSizePixel = 0
     panel.ZIndex = 99999
     panel.Parent = gui
 
-    -- rounded corner + outline
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 10)
     corner.Parent = panel
 
+    -- outline panel (hitam)
     local outline = Instance.new("UIStroke")
     outline.Thickness = 3
-    outline.Color = Color3.fromRGB(255, 220, 220)
+    outline.Color = Color3.fromRGB(0, 0, 0)
     outline.Parent = panel
 
-    -- logo (centered, above text)
+    -- logo
     local logo = Instance.new("ImageLabel")
     logo.Size = UDim2.new(0, 88, 0, 88)
     logo.AnchorPoint = Vector2.new(0.5, 0)
     logo.Position = UDim2.new(0.5, 0, 0, 16)
     logo.Image = "rbxassetid://133865385818233"
     logo.BackgroundTransparency = 1
+    logo.ZIndex = logo.Parent.ZIndex + 1
     logo.Parent = panel
-    logo.ZIndex = logo.Parent.ZIndex+1
 
+    -- outline logo (hitam, sama tebal)
+    local logoOutline = Instance.new("UIStroke")
+    logoOutline.Thickness = 3
+    logoOutline.Color = Color3.fromRGB(0, 0, 0)
+    logoOutline.Parent = logo
 
-    -- title ("by xeter")
+    -- title ("by xeter", hitam)
     local title = Instance.new("TextLabel")
     title.Size = UDim2.new(1, -20, 0, 40)
     title.Position = UDim2.new(0, 10, 0, 110)
@@ -52,29 +57,24 @@ return function()
     title.Text = "by xeter"
     title.Font = Enum.Font.GothamBold
     title.TextSize = 32
-    title.TextColor3 = Color3.fromRGB(255,255,255)
-    title.TextScaled = false
+    title.TextColor3 = Color3.fromRGB(0, 0, 0)
     title.TextStrokeTransparency = 0.6
-    title.TextWrapped = true
     title.Parent = panel
-    title.ZIndex = title.Parent.ZIndex+1
+    title.ZIndex = title.Parent.ZIndex + 1
 
-
-    -- sub ("powered by AI tools")
+    -- subtitle ("helped by AI tools", merah gelap tapi redup)
     local sub = Instance.new("TextLabel")
     sub.Size = UDim2.new(1, -20, 0, 24)
     sub.Position = UDim2.new(0, 10, 0, 148)
     sub.BackgroundTransparency = 1
-    sub.Text = "powered by AI tools"
+    sub.Text = "helped by AI tools"
     sub.Font = Enum.Font.Gotham
     sub.TextSize = 18
-    sub.TextColor3 = Color3.fromRGB(235,230,230)
-    sub.TextScaled = false
+    sub.TextColor3 = Color3.fromRGB(100, 10, 10) -- lebih gelap dari panel
     sub.Parent = panel
-    sub.ZIndex = sub.Parent.ZIndex+1
+    sub.ZIndex = sub.Parent.ZIndex + 1
 
-
-    -- enjoy (slightly darker)
+    -- enjoy
     local enjoy = Instance.new("TextLabel")
     enjoy.Size = UDim2.new(1, -20, 0, 20)
     enjoy.Position = UDim2.new(0, 10, 0, 170)
@@ -82,16 +82,15 @@ return function()
     enjoy.Text = "Enjoy!"
     enjoy.Font = Enum.Font.GothamSemibold
     enjoy.TextSize = 18
-    enjoy.TextColor3 = Color3.fromRGB(170,60,60)
+    enjoy.TextColor3 = Color3.fromRGB(170, 60, 60)
     enjoy.Parent = panel
-    enjoy.ZIndex = enjoy.Parent.ZIndex+1
+    enjoy.ZIndex = enjoy.Parent.ZIndex + 1
 
-
-    -- optional whoosh sound (fire-and-forget)
+    -- whoosh sound
     spawn(function()
         pcall(function()
             local s = Instance.new("Sound")
-            s.SoundId = "rbxassetid://112485797063762" -- contoh whoosh
+            s.SoundId = "rbxassetid://112485797063762"
             s.Volume = 1.6
             s.Parent = SoundService
             s:Play()
@@ -99,17 +98,17 @@ return function()
         end)
     end)
 
-    -- Tween in: 3s from top to center
+    -- Tween in
     local tweenIn = TweenService:Create(panel, TweenInfo.new(3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
         Position = UDim2.new(0.5, 0, 0.5, 0)
     })
     tweenIn:Play()
     tweenIn.Completed:Wait()
 
-    -- hold 2s
-    task.wait(2)
+    -- Hold
+    task.wait(5)
 
-    -- fade out 1s (panel + children)
+    -- Fade out
     local tweenOut = TweenService:Create(panel, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
         BackgroundTransparency = 1
     })
@@ -125,9 +124,6 @@ return function()
     end
     tweenOut.Completed:Wait()
 
-    -- cleanup
     gui:Destroy()
-
-    -- function returns after finished
     return
 end
