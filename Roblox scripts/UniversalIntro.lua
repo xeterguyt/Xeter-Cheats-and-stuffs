@@ -33,23 +33,32 @@ return function()
     outline.Color = Color3.fromRGB(0, 0, 0)
     outline.Parent = panel
 
-    -- logo
+    -- logo wrapper (circle outline) + image centered inside
+    local logoWrapper = Instance.new("Frame")
+    logoWrapper.Size = UDim2.new(0, 96, 0, 96)            -- sedikit lebih besar dari image untuk outline gap
+    logoWrapper.AnchorPoint = Vector2.new(0.5, 0)         -- align like before
+    logoWrapper.Position = UDim2.new(0.5, 0, 0, 16)
+    logoWrapper.BackgroundTransparency = 1
+    logoWrapper.Parent = panel                             -- set parent FIRST
+    logoWrapper.ZIndex = panel.ZIndex + 1
+
+    local logoCorner = Instance.new("UICorner")
+    logoCorner.CornerRadius = UDim.new(1, 0)               -- full circle
+    logoCorner.Parent = logoWrapper
+
+    local logoOutline = Instance.new("UIStroke")
+    logoOutline.Thickness = 3                              -- sama tebal seperti outline panel
+    logoOutline.Color = Color3.fromRGB(0, 0, 0)            -- hitam
+    logoOutline.Parent = logoWrapper
+
     local logo = Instance.new("ImageLabel")
-    logo.Size = UDim2.new(0, 88, 0, 88)
+    logo.Size = UDim2.new(0, 88, 0, 88)                   -- image slightly smaller than wrapper
     logo.AnchorPoint = Vector2.new(0.5, 0)
-    logo.Position = UDim2.new(0.5, 0, 0, 16)
+    logo.Position = UDim2.new(0.5, 0, 0, 4)               -- fine-tune vertical offset inside wrapper
     logo.Image = "rbxassetid://133865385818233"
     logo.BackgroundTransparency = 1
-    logo.Parent = panel
-    logo.ZIndex = logo.Parent.ZIndex + 1
-    
-
-    -- outline logo (hitam, sama tebal)
-    local logoOutline = Instance.new("UIStroke")
-    logoOutline.Thickness = 3
-    logoOutline.Color = Color3.fromRGB(0, 0, 0)
-    logoOutline.Parent = logo
-
+    logo.Parent = logoWrapper
+    logo.ZIndex = logoWrapper.ZIndex + 1
     -- title ("by xeter", hitam)
     local title = Instance.new("TextLabel")
     title.Size = UDim2.new(1, -20, 0, 40)
