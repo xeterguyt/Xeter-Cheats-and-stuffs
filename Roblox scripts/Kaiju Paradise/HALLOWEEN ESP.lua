@@ -40,7 +40,7 @@ frame.ZIndex = 10
 
 local toggleBtn = Instance.new("TextButton")
 toggleBtn.Parent = frame
-toggleBtn.Size = UDim2.new(0.7, -5, 1, 0)
+toggleBtn.Size = UDim2.new(0.7, 0, 1, 0)
 toggleBtn.Position = UDim2.new(0, 0, 0, 0)
 toggleBtn.Text = "ESP: ON"
 toggleBtn.TextColor3 = Color3.new(1, 1, 1)
@@ -52,7 +52,7 @@ toggleBtn.ZIndex = toggleBtn.Parent.ZIndex + 1
 local closeBtn = Instance.new("TextButton")
 closeBtn.Parent = frame
 closeBtn.Size = UDim2.new(0.3, 0, 1, 0)
-closeBtn.Position = UDim2.new(0.7, 4, 0, 0)
+closeBtn.Position = UDim2.new(0.7, 0, 0, 0)
 closeBtn.Text = "X"
 closeBtn.TextColor3 = Color3.new(1, 1, 1)
 closeBtn.TextScaled = true
