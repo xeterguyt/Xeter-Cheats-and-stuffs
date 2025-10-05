@@ -34,9 +34,9 @@ return function()
 
     -- logo (centered, above text)
     local logo = Instance.new("ImageLabel")
-    logo.Size = UDim2.new(0, 88, 0, 88)
-    logo.AnchorPoint = Vector2.new(0.5, 0)
-    logo.Position = UDim2.new(0.5, 0, 0, 16)
+    Logo.Size = UDim2.new(0, 200, 0, 200)
+    Logo.Position = UDim2.new(0.5, -100, 0.2, 0)
+    Logo.AnchorPoint = Vector2.new(0.5, 0.5)
     logo.Image = "rbxassetid://108691300199501"
     logo.BackgroundTransparency = 1
     logo.Parent = panel
