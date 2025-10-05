@@ -47,8 +47,8 @@ return function()
     logoCorner.Parent = logoWrapper
 
     local logoOutline = Instance.new("UIStroke")
-    logoOutline.Thickness = 3                              -- sama tebal seperti outline panel
-    logoOutline.Color = Color3.fromRGB(0, 0, 0)            -- hitam
+    logoOutline.Thickness = 3                              -- sama tebal ddgn outline panel
+    logoOutline.Color = Color3.fromRGB(0, 0, 0)            -- hitam king
     logoOutline.Parent = logoWrapper
 
     local logo = Instance.new("ImageLabel")
