@@ -37,7 +37,7 @@ return function()
     logo.Size = UDim2.new(0, 200, 0, 200)
     logo.AnchorPoint = Vector2.new(0.5, 0.5)
     logo.Position = UDim2.new(0.5, -100, 0.2, 0)
-    logo.Image = "rbxassetid://108691300199501"
+    logo.Image = "rbxassetid://32578004"
     logo.BackgroundTransparency = 1
     logo.Parent = panel
     logo.ZIndex = panel.ZIndex+1
