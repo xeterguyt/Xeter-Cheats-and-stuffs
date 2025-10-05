@@ -40,7 +40,7 @@ return function()
     logo.Image = "rbxassetid://108691300199501"
     logo.BackgroundTransparency = 1
     logo.Parent = panel
-    logo.ZIndex = logo.parent.ZIndex+1
+    logo.ZIndex = panel.ZIndex+1
 
     -- title ("by xeter")
     local title = Instance.new("TextLabel")
