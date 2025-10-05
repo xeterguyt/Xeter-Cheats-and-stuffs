@@ -42,12 +42,6 @@ return function()
     logo.Parent = panel
     logo.ZIndex = logo.Parent.ZIndex+1
 
-    -- tunggu sampai gambar siap tampil
-    task.spawn(function()
-     pcall(function()
-        logo:GetPropertyChangedSignal("IsLoaded"):Wait()
-     end)
-    end)
 
     -- title ("by xeter")
     local title = Instance.new("TextLabel")
