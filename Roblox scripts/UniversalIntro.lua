@@ -40,6 +40,7 @@ return function()
     logo.Image = "rbxassetid://108691300199501" -- gunakan id yang kamu berikan
     logo.BackgroundTransparency = 1
     logo.Parent = panel
+    logo.ZIndex = logo.parent.ZIndex+1
 
     -- title ("by xeter")
     local title = Instance.new("TextLabel")
@@ -54,6 +55,8 @@ return function()
     title.TextStrokeTransparency = 0.6
     title.TextWrapped = true
     title.Parent = panel
+    title.ZIndex = title.parent.ZIndex+1
+
 
     -- sub ("powered by AI tools")
     local sub = Instance.new("TextLabel")
@@ -66,6 +69,8 @@ return function()
     sub.TextColor3 = Color3.fromRGB(235,230,230)
     sub.TextScaled = false
     sub.Parent = panel
+    sub.ZIndex = sub.parent.ZIndex+1
+
 
     -- enjoy (slightly darker)
     local enjoy = Instance.new("TextLabel")
@@ -77,6 +82,8 @@ return function()
     enjoy.TextSize = 18
     enjoy.TextColor3 = Color3.fromRGB(170,60,60)
     enjoy.Parent = panel
+    enjoy.ZIndex = enjoy.parent.ZIndex+1
+
 
     -- optional whoosh sound (fire-and-forget)
     spawn(function()
