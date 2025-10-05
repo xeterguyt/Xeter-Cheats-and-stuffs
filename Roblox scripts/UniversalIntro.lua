@@ -80,7 +80,7 @@ return function()
     sub.Text = "helped by AI tools"
     sub.Font = Enum.Font.Gotham
     sub.TextSize = 18
-    sub.TextColor3 = Color3.fromRGB(100, 10, 10) -- lebih gelap dari panel
+    sub.TextColor3 = Color3.fromRGB(50, 1, 1) -- lebih gelap dari panel
     sub.Parent = panel
     sub.ZIndex = sub.Parent.ZIndex + 1
 
