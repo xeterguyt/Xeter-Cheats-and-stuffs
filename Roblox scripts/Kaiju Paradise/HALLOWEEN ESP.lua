@@ -45,16 +45,18 @@ toggleBtn.TextColor3 = Color3.new(1, 1, 1)
 toggleBtn.TextScaled = true
 toggleBtn.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
 toggleBtn.BorderSizePixel = 0
+toggleBtn.ZIndex = toggleBtn.Parent.ZIndex + 1
 
 local closeBtn = Instance.new("TextButton")
 closeBtn.Parent = frame
 closeBtn.Size = UDim2.new(0.3, 0, 1, 0)
-closeBtn.Position = UDim2.new(0.7, 5, 0, 0)
+closeBtn.Position = UDim2.new(0, 5, 0, 0)
 closeBtn.Text = "X"
 closeBtn.TextColor3 = Color3.new(1, 1, 1)
 closeBtn.TextScaled = true
 closeBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
 closeBtn.BorderSizePixel = 0
+closeBtn.ZIndex = closeBtn.Parent.ZIndex + 1
 
 -- Ping indicator
 local pingLabel = Instance.new("TextLabel")
