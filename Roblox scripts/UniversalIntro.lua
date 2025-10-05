@@ -37,7 +37,7 @@ return function()
     logo.Size = UDim2.new(0, 88, 0, 88)
     logo.AnchorPoint = Vector2.new(0.5, 0)
     logo.Position = UDim2.new(0.5, 0, 0, 16)
-    logo.Image = "https://create.roblox.com/store/asset/108691300199501/Xryran"
+    logo.Image = "https://create.roblox.com/store/asset/8508980536/Xryran"
     logo.BackgroundTransparency = 1
     logo.Parent = panel
     logo.ZIndex = logo.parent.ZIndex+1
@@ -89,7 +89,7 @@ return function()
     spawn(function()
         pcall(function()
             local s = Instance.new("Sound")
-            s.SoundId = "rbxassetid://9118823106" -- contoh whoosh
+            s.SoundId = "rbxassetid://112485797063762" -- contoh whoosh
             s.Volume = 1.6
             s.Parent = SoundService
             s:Play()
