@@ -2,6 +2,7 @@
 🎃 Halloween ESP System v3.4
 Intro!
 And som manually fixes
+help me xd
 --]]
 
 -- panggil intro dan tunggu selesaiiii
