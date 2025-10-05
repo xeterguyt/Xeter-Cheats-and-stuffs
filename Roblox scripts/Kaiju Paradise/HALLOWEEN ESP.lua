@@ -3,15 +3,12 @@
 Intro!
 --]]
 
-local INTRO_URL = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/Roblox%20scripts/UniversalIntro.lua"
-local SCRIPT_URL = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/Roblox%20scripts/Kaiju%20Paradise/HALLOWEEN%20ESP.lua"
+-- panggil intro dan tunggu selesaiiii
+local INTRO_RAW = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/refs/heads/main/Roblox%20scripts/UniversalIntro.lua"
+local intro = loadstring(game:HttpGet(INTRO_RAW))()  -- loadstring returns the function
+intro() -- plays intro and yields until done
 
-if not getgenv()._XETER_INTRO_LOADED then
-	getgenv()._XETER_INTRO_LOADED = true
-	local intro = loadstring(game:HttpGet(INTRO_URL))()
-	intro(SCRIPT_URL)
-	return
-end
+-- lanjutkan ke kode ESP-mu di bawah ini...
 
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
