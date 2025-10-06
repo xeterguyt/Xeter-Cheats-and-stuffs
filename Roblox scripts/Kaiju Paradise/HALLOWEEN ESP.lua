@@ -1,17 +1,15 @@
 --[[
-🎃 Halloween ESP System v3.4
-Intro!
-And som manually fixes
-help me xd
+🎃 Halloween ESP System v3.5
+Ghost ESP ooOOOOooo
 --]]
 
 -- panggil intro dan tunggu selesaiiii
 local INTRO_RAW = "https://raw.githubusercontent.com/xeterguyt/Xeter-Cheats-and-stuffs/refs/heads/main/Roblox%20scripts/UniversalIntro.lua"
 local intro = loadstring(game:HttpGet(INTRO_RAW))()  -- loadstring returns the function
-intro() -- plays intro and yields until done
-
+intro()
 --habis itu lanjot
 
+print("Very short loading...")
 local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 
@@ -127,8 +125,22 @@ end
 
 -- ESP logic
 local function createESP(model)
-	local shapeType = model.Name == "HalloweenDoor" and "Triangle" or "Circle"
-	local color = shapeType == "Triangle" and Color3.fromRGB(255, 100, 255) or Color3.fromRGB(255, 150, 0)
+	local shapeType
+	local color
+
+	if model.Name == "HalloweenDoor" then
+		shapeType = "Triangle"
+		color = Color3.fromRGB(255, 100, 255)
+
+	elseif model.Name == "Model" or model.Name == "Ghost" then
+		-- ini untuk ghost
+		shapeType = "Square" -- bisa diganti "Circle" kalau mau
+		color = Color3.fromRGB(0, 255, 200) -- hijau kebiruan (biar beda dari dua lainnya)
+
+	else
+		shapeType = "Circle"
+		color = Color3.fromRGB(255, 150, 0)
+	end
 
 	local label = Instance.new("TextLabel")
 	label.Parent = gui
@@ -186,6 +198,7 @@ local function createESP(model)
 	end)
 end
 
+
 -- Scan Terrain
 local terrain = workspace:WaitForChild("Terrain")
 for _, v in ipairs(terrain:GetDescendants()) do
@@ -199,6 +212,23 @@ terrain.DescendantAdded:Connect(function(v)
 		createESP(v)
 	end
 end)
+
+-- Scan workspace/Scripted/Ghost
+local ghostFolder = workspace:WaitForChild("Scripted"):WaitForChild("Ghost")
+
+for _, v in ipairs(ghostFolder:GetDescendants()) do
+	if v:IsA("Model") and v.Name == "Model" then
+		createESP(v)
+	end
+end
+
+
+ghostFolder.ChildAdded:Connect(function(v)
+	if v:IsA("Model") then
+		createESP(v)
+	end
+end)
+
 
 -- Toggle ESP
 toggleBtn.MouseButton1Click:Connect(function()
